@@ -30,12 +30,12 @@ packets start getting dropped.
 
 %description -l pl
 ipband jest bazuj±cym na pcap monitorem ruchu IP. S³ucha na
-interfejsie sieciowym w trybie promiscuous, liczy ruch przypadaj±cy
-na podsieci oraz wykorzystanie pasma i zaczyna szczegó³owe logowanie
+interfejsie sieciowym w trybie promiscuous, liczy ruch przypadaj±cy na
+podsieci oraz wykorzystanie pasma i zaczyna szczegó³owe logowanie
 je¿eli podany próg dla danej podsieci zostanie przekroczony.
 
-To narzêdzie mo¿e byæ pomocne w ¶rodowisku WAN (frame relay, ISDN)
-z ograniczonym pasmem do wykrywania ¼ród³a nadmiernego ruchu, kiedy
+To narzêdzie mo¿e byæ pomocne w ¶rodowisku WAN (frame relay, ISDN) z
+ograniczonym pasmem do wykrywania ¼ród³a nadmiernego ruchu, kiedy
 niektóre ³±cza staj± siê wysycone do takiego stopnia, ¿e gubione s±
 poprawne pakiety.
 
