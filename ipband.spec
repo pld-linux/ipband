@@ -2,7 +2,7 @@ Summary:	IP bandwidth watchdog
 Summary(pl):	Monitor ruchu IP
 Name:		ipband
 Version:	0.7.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://ipband.sourceforge.net/%{name}-%{version}.tgz
@@ -80,6 +80,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ipband
+%dir %{_sysconfdir}
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ipband.conf
 %attr(754,root,root) /etc/rc.d/init.d/ipband
 %attr(640,root,root) %ghost /var/log/ipband.log
