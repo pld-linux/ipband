@@ -12,8 +12,8 @@ Patch1:		%{name}-PLD_rc.patch
 Patch2:		%{name}-paths.patch
 URL:		http://ipband.sf.net/
 BuildRequires:	libpcap-devel
-Prereq:		/sbin/chkconfig
-Prereq:		rc-scripts
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _sysconfdir     /etc/ipband
@@ -53,7 +53,8 @@ poprawne pakiety.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/var/log
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 touch $RPM_BUILD_ROOT/var/log/ipband.log
 
