@@ -1,0 +1,89 @@
+diff -urN ipband-0.7/ipband.rc ipband-0.7.dzikus/ipband.rc
+--- ipband-0.7/ipband.rc	Mon Jan 14 16:13:19 2002
++++ ipband-0.7.dzikus/ipband.rc	Tue Feb 12 11:14:33 2002
+@@ -3,54 +3,56 @@
+ # ipband	This shell script takes care of starting and stopping
+ #		ipband.
+ #
+-# chkconfig: - 85 15
++# chkconfig: 345 85 15
+ # description: ip bandwidth watchdog
+ 
+-# Source function library.
+-. /etc/init.d/functions
++# Source function library
++. /etc/rc.d/init.d/functions
+ 
+-[ -f /etc/ipband.conf ] || exit 0
++# Get network config
++. /etc/sysconfig/network
+ 
+-RETVAL=0
+-prog="ipband"
++[ -f /etc/ipband/ipband.conf ] || exit 0
+ 
+-start() {
+-        echo -n $"Starting $prog: "
+-        daemon /usr/local/bin/ipband 
+-	RETVAL=$?
+-        echo
+-        [ $RETVAL -eq 0 ] && touch /var/lock/subsys/ipband
+-	return $RETVAL
+-}
+-
+-stop() {
+-        echo -n $"Shutting down $prog: "
+-	killproc ipband
+-	RETVAL=$?
+-        echo
+-        [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/ipband
+-	return $RETVAL
+-}
++# Check that networking is up.
++if is_no "${NETWORKING}"; then
++        msg_Network_Down ipband
++        exit 1
++fi
+ 
+ # See how we were called.
+ case "$1" in
+   start)
+-	start
++        if [ ! -f /var/lock/subsys/ipband ]; then
++                msg_starting ipband
++                daemon /usr/bin/ipband -c /etc/ipband/ipband.conf -F
++                RETVAL=$?
++                [ $RETVAL -eq 0 ] && touch /var/lock/subsys/ipband
++        else
++                msg_Already_Running ipband
++        fi
+         ;;
+   stop)
+-	stop
++        if [ -f /var/lock/subsys/ipband ]; then
++                msg_stopping ipband
++                killproc ipband
++                rm -f /var/lock/subsys/ipband >/dev/null 2>&1
++        else
++                msg_Not_Running ipband
++                exit 1
++        fi
+         ;;
+   status)
+ 	status ipband
+-	RETVAL=$?
++	exit $?
+ 	;;
+   restart|reload)
+-	stop
+-	start
+-	RETVAL=$?
++	$0 stop
++	$0 start
+ 	;;
+   *)
+         echo $"Usage: $0 {start|stop|restart|status}"
+         exit 1
+ esac
+ 
++exit $RETVAL

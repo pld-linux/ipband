@@ -1,0 +1,18 @@
+diff -urN ipband-0.7/Makefile ipband-0.7.dzikus/Makefile
+--- ipband-0.7/Makefile	Mon Jan 14 16:13:19 2002
++++ ipband-0.7.dzikus/Makefile	Tue Feb 12 10:12:42 2002
+@@ -29,10 +29,10 @@
+ 
+ 
+ install: all
+-	install -D ipband   /usr/local/bin/ipband
+-	install -D ipband.1 /usr/local/man/man1/ipband.1
+-	install -D ipband.sample.conf /etc/ipband.sample.conf
+-	install -D ipband.rc /etc/rc.d/init.d/ipband
++	install -D ipband   $(DESTDIR)/usr/bin/ipband
++	install -D ipband.1 $(DESTDIR)/usr/share/man/man1/ipband.1
++	install -D ipband.sample.conf $(DESTDIR)/etc/ipband/ipband.conf
++	install -D ipband.rc $(DESTDIR)/etc/rc.d/init.d/ipband
+ 
+ 
+ clean:
