@@ -1,13 +1,17 @@
 diff -urN ipband-0.7/ipband.rc ipband-0.7.dzikus/ipband.rc
 --- ipband-0.7/ipband.rc	Mon Jan 14 16:13:19 2002
-+++ ipband-0.7.dzikus/ipband.rc	Tue Feb 12 11:14:33 2002
-@@ -3,54 +3,56 @@
- # ipband	This shell script takes care of starting and stopping
- #		ipband.
++++ ipband-0.7.dzikus/ipband.rc	Tue Feb 12 11:27:06 2002
+@@ -1,56 +1,57 @@
+ #!/bin/sh
+ #
+-# ipband	This shell script takes care of starting and stopping
+-#		ipband.
++# ipband        This shell script takes care of starting and stopping ipband.
  #
 -# chkconfig: - 85 15
-+# chkconfig: 345 85 15
- # description: ip bandwidth watchdog
+-# description: ip bandwidth watchdog
++# chkconfig:    345 85 15
++# description:  ip bandwidth watchdog
  
 -# Source function library.
 -. /etc/init.d/functions
@@ -20,8 +24,7 @@ diff -urN ipband-0.7/ipband.rc ipband-0.7.dzikus/ipband.rc
  
 -RETVAL=0
 -prog="ipband"
-+[ -f /etc/ipband/ipband.conf ] || exit 0
- 
+-
 -start() {
 -        echo -n $"Starting $prog: "
 -        daemon /usr/local/bin/ipband 
@@ -39,6 +42,8 @@ diff -urN ipband-0.7/ipband.rc ipband-0.7.dzikus/ipband.rc
 -        [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/ipband
 -	return $RETVAL
 -}
++[ -f /etc/ipband/ipband.conf ] || exit 0
++
 +# Check that networking is up.
 +if is_no "${NETWORKING}"; then
 +        msg_Network_Down ipband
