@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://ipband.sourceforge.net/%{name}-%{version}.tgz
+# Source0-md5:	964d7e1e5392d0ede548f7173c0deb85
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-PLD_rc.patch
 Patch2:		%{name}-paths.patch
