@@ -9,7 +9,7 @@ Group(da):	Netværks/Værktøj
 Group(de):	Netzwerkwesen/Dienstprogramme
 Group(es):	Red/Utilitarios
 Group(fr):	Réseau/Utilitaires
-Group(is):	Verkfræði/Tól
+Group(is):	Net/Tól
 Group(it):	Rete/Utility
 Group(no):	Nettverks/Verktøy
 Group(pl):	Sieciowe/Narzêdzia
@@ -21,11 +21,10 @@ Group(sv):	Nätverk/Verktyg
 Source0:	http://ipband.sourceforge.net/%{name}-%{version}.tgz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-PLD_rc.patch
-Requires:	libpcap
+URL:		http://ipband.sf.net/
 BuildRequires:	libpcap-devel
 Prereq:		/sbin/chkconfig
 Prereq:		rc-scripts
-URL:		http://ipband.sf.net
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _sysconfdir     /etc/ipband
@@ -51,6 +50,7 @@ packets start getting dropped.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 %post
