@@ -16,7 +16,7 @@ PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _sysconfdir     /etc/ipband
+%define		_sysconfdir	/etc/ipband
 
 %description
 ipband is pcap based IP traffic monitor. It listens to a network
@@ -64,17 +64,17 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/chkconfig --add ipband
 if [ -f /var/lock/subsys/ipband ]; then
-        /etc/rc.d/init.d/ipband restart 1>&2
+	/etc/rc.d/init.d/ipband restart 1>&2
 else
-        echo "Run \"/etc/rc.d/init.d/ipband start\" to start ipband daemon."
+	echo "Run \"/etc/rc.d/init.d/ipband start\" to start ipband daemon."
 fi
 
 %preun
 if [ "$1" = "0" ]; then
-        if [ -f /var/lock/subsys/ipband ]; then
-                /etc/rc.d/init.d/ipband stop 1>&2
-        fi
-        /sbin/chkconfig --del ipband
+	if [ -f /var/lock/subsys/ipband ]; then
+		/etc/rc.d/init.d/ipband stop 1>&2
+	fi
+	/sbin/chkconfig --del ipband
 fi
 
 %files
