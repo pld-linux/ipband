@@ -1,7 +1,8 @@
-Summary:	IP bandwidth watchdog.
+Summary:	IP bandwidth watchdog
+Summary(pl):	Monitor ruchu IP
 Name:		ipband
 Version:	0.7
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Utilities
 Group(cs):	Sí»ové/Utility
@@ -40,6 +41,17 @@ This utility could be handy in a limited bandwidth WAN environment
 if certain links become saturated to the point where legitimate
 packets start getting dropped.
 
+%description -l pl
+ipband jest bazuj±cym na pcap monitorem ruchu IP. S³ucha na
+interfejsie sieciowym w trybie promiscuous, liczy ruch przypadaj±cy
+na podsieci oraz wykorzystanie pasma i zaczyna szczegó³owe logowanie
+je¿eli podany próg dla danej podsieci zostanie przekroczony.
+
+To narzêdzie mo¿e byæ pomocne w ¶rodowisku WAN (frame relay, ISDN)
+z ograniczonym pasmem do wykrywania ¼ród³a nadmiernego ruchu, kiedy
+niektóre ³±cza staj± siê wysycone do takiego stopnia, ¿e gubione s±
+poprawne pakiety.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -53,6 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
 /sbin/chkconfig --add ipband
 if [ -f /var/lock/subsys/ipband ]; then
@@ -60,7 +75,6 @@ if [ -f /var/lock/subsys/ipband ]; then
 else
         echo "Run \"/etc/rc.d/init.d/ipband start\" to start ipband daemon."
 fi
-
 
 %preun
 if [ "$1" = "0" ]; then
@@ -76,6 +90,3 @@ fi
 %attr(755,root,root) %{_bindir}/ipband
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ipband.conf
 %attr(754,root,root) /etc/rc.d/init.d/ipband
-
-%clean
-rm -rf $RPM_BUILD_ROOT
