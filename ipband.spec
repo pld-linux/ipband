@@ -67,6 +67,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT/var/log
+touch $RPM_BUILD_ROOT/var/log/ipband.log
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -92,3 +95,4 @@ fi
 %attr(755,root,root) %{_bindir}/ipband
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ipband.conf
 %attr(754,root,root) /etc/rc.d/init.d/ipband
+%attr(640,root,root) %ghost /var/log/ipband.log
