@@ -1,8 +1,8 @@
 Summary:	IP bandwidth watchdog
 Summary(pl):	Monitor ruchu IP
 Name:		ipband
-Version:	0.7
-Release:	2
+Version:	0.7.2
+Release:	1
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://ipband.sourceforge.net/%{name}-%{version}.tgz
