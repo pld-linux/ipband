@@ -1,0 +1,36 @@
+diff -urN ipband-0.7/ipband.h ipband-0.7.dzikus/ipband.h
+--- ipband-0.7/ipband.h	Mon Jan 14 16:13:19 2002
++++ ipband-0.7.dzikus/ipband.h	Tue Feb 12 11:43:58 2002
+@@ -56,9 +56,9 @@
+ #undef  DUMP
+ 
+ /* Defaults */
+-#define CONFIG_DEF "/etc/ipband.conf"
++#define CONFIG_DEF "/etc/ipband/ipband.conf"
+ #define MTASTR_DEF "/usr/sbin/sendmail -t -ba"
+-#define REPFILE_DEF "ipband.txt"
++#define REPFILE_DEF "/var/log/ipband.log"
+ 
+ #define TRUE 1
+ #define FALSE 0
+diff -urN ipband-0.7/ipband.sample.conf ipband-0.7.dzikus/ipband.sample.conf
+--- ipband-0.7/ipband.sample.conf	Mon Jan 14 16:13:19 2002
++++ ipband-0.7.dzikus/ipband.sample.conf	Tue Feb 12 11:45:20 2002
+@@ -22,7 +22,7 @@
+ #filter net 10.10.0.0/16
+ 
+ #   Report file.
+-#outfile ipband.txt
++#outfile /var/log/ipband.log
+ 
+ #   Default bandwidth in kBytes/sec.
+ #bandwidth 7 
+@@ -50,7 +50,7 @@
+ #lenadj -8
+ 
+ #   ASCII file to use as e-mail report footer.
+-#mailfoot /etc/ipband.foot
++#mailfoot /etc/ipband/ipband.foot
+ 
+ #   MTA string. Default is "/usr/sbin/sendmail -t -ba". Change it to
+ #   whatever runs MTA of your choice. Note that the stringis tokenized and 
