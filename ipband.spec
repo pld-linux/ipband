@@ -22,6 +22,7 @@ Group(sv):	Nätverk/Verktyg
 Source0:	http://ipband.sourceforge.net/%{name}-%{version}.tgz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-PLD_rc.patch
+Patch2:		%{name}-paths.patch
 URL:		http://ipband.sf.net/
 BuildRequires:	libpcap-devel
 Prereq:		/sbin/chkconfig
@@ -56,6 +57,7 @@ poprawne pakiety.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__make}
