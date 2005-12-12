@@ -12,8 +12,8 @@ Patch1:		%{name}-PLD_rc.patch
 Patch2:		%{name}-paths.patch
 URL:		http://ipband.sf.net/
 BuildRequires:	libpcap-devel
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/ipband
@@ -81,7 +81,7 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ipband
 %dir %{_sysconfdir}
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ipband.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ipband.conf
 %attr(754,root,root) /etc/rc.d/init.d/ipband
 %attr(640,root,root) %ghost /var/log/ipband.log
 %{_mandir}/man1/ipband.1*
