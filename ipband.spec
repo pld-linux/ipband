@@ -10,8 +10,9 @@ Source0:	http://ipband.sourceforge.net/%{name}-%{version}.tgz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-PLD_rc.patch
 Patch2:		%{name}-paths.patch
-URL:		http://ipband.sf.net/
+URL:		http://ipband.sourceforge.net/
 BuildRequires:	libpcap-devel
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -63,17 +64,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add ipband
-if [ -f /var/lock/subsys/ipband ]; then
-	/etc/rc.d/init.d/ipband restart 1>&2
-else
-	echo "Run \"/etc/rc.d/init.d/ipband start\" to start ipband daemon."
-fi
+%service ipband restart "ipband daemon"
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/ipband ]; then
-		/etc/rc.d/init.d/ipband stop 1>&2
-	fi
+	%service ipband stop
 	/sbin/chkconfig --del ipband
 fi
 
