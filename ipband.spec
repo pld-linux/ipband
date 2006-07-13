@@ -48,7 +48,8 @@ poprawne pakiety.
 %patch2 -p1
 
 %build
-%{__make}
+%{__make} \
+	CC="%{__cc}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -74,6 +75,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc CHANGELOG README
 %attr(755,root,root) %{_bindir}/ipband
 %dir %{_sysconfdir}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ipband.conf
