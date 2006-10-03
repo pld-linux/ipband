@@ -1,18 +1,17 @@
-diff -urN ipband-0.7/Makefile ipband-0.7.dzikus/Makefile
---- ipband-0.7/Makefile	Mon Jan 14 16:13:19 2002
-+++ ipband-0.7.dzikus/Makefile	Tue Feb 12 10:12:42 2002
-@@ -29,10 +29,10 @@
- 
- 
- install: all
--	install -D ipband   /usr/local/bin/ipband
--	install -D ipband.1 /usr/local/man/man1/ipband.1
--	install -D ipband.sample.conf /etc/ipband.sample.conf
--	install -D ipband.rc /etc/rc.d/init.d/ipband
-+	install -D ipband   $(DESTDIR)/usr/bin/ipband
-+	install -D ipband.1 $(DESTDIR)/usr/share/man/man1/ipband.1
-+	install -D ipband.sample.conf $(DESTDIR)/etc/ipband/ipband.conf
-+	install -D ipband.rc $(DESTDIR)/etc/rc.d/init.d/ipband
+--- ipband-0.8/Makefile	2006-10-02 21:28:20.000000000 +0200
++++ ipband-0.8.new/Makefile	2006-10-03 10:25:53.778650000 +0200
+@@ -58,10 +58,10 @@
+ 	mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MAN1DIR)
+ 	mkdir -p $(DESTDIR)$(SYSCONFDIR)
+ 	mkdir -p $(DESTDIR)$(RCDIR)
+-	install -D ipband   		$(DESTDIR)$(BINDIR)/ipband
+-	install -D ipband.1 		$(DESTDIR)$(MAN1DIR)/ipband.1
+-	install -D ipband.sample.conf 	$(DESTDIR)$(SYSCONFDIR)/ipband.sample.conf
+-	install -D ipband.rc 		$(DESTDIR)$(RCDIR)/ipband
++	install -D ipband   		$(DESTDIR)/usr/bin/ipband
++	install -D ipband.1 		$(DESTDIR)/usr/share/man/man1/ipband.1
++	install -D ipband.sample.conf 	$(DESTDIR)/etc/ipband/ipband.conf
++	install -D ipband.rc 		$(DESTDIR)/etc/rc.d/init.d/ipband
  
  
  clean:
