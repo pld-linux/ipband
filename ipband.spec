@@ -1,5 +1,5 @@
 Summary:	IP bandwidth watchdog
-Summary(pl):	Monitor ruchu IP
+Summary(pl.UTF-8):   Monitor ruchu IP
 Name:		ipband
 Version:	0.8
 Release:	1
@@ -30,15 +30,15 @@ This utility could be handy in a limited bandwidth WAN environment
 if certain links become saturated to the point where legitimate
 packets start getting dropped.
 
-%description -l pl
-ipband jest bazuj±cym na pcap monitorem ruchu IP. S³ucha na
-interfejsie sieciowym w trybie promiscuous, liczy ruch przypadaj±cy na
-podsieci oraz wykorzystanie pasma i zaczyna szczegó³owe logowanie
-je¿eli podany próg dla danej podsieci zostanie przekroczony.
+%description -l pl.UTF-8
+ipband jest bazujÄ…cym na pcap monitorem ruchu IP. SÅ‚ucha na
+interfejsie sieciowym w trybie promiscuous, liczy ruch przypadajÄ…cy na
+podsieci oraz wykorzystanie pasma i zaczyna szczegÃ³Å‚owe logowanie
+jeÅ¼eli podany prÃ³g dla danej podsieci zostanie przekroczony.
 
-To narzêdzie mo¿e byæ pomocne w ¶rodowisku WAN (frame relay, ISDN) z
-ograniczonym pasmem do wykrywania ¼ród³a nadmiernego ruchu, kiedy
-niektóre ³±cza staj± siê wysycone do takiego stopnia, ¿e gubione s±
+To narzÄ™dzie moÅ¼e byÄ‡ pomocne w Å›rodowisku WAN (frame relay, ISDN) z
+ograniczonym pasmem do wykrywania ÅºrÃ³dÅ‚a nadmiernego ruchu, kiedy
+niektÃ³re Å‚Ä…cza stajÄ… siÄ™ wysycone do takiego stopnia, Å¼e gubione sÄ…
 poprawne pakiety.
 
 %prep
