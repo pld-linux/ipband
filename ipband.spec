@@ -1,5 +1,5 @@
 Summary:	IP bandwidth watchdog
-Summary(pl.UTF-8):   Monitor ruchu IP
+Summary(pl.UTF-8):	Monitor ruchu IP
 Name:		ipband
 Version:	0.8
 Release:	1
